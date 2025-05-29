@@ -518,4 +518,182 @@ footer {
         text-decoration: none;
         color: #000;
     }
+}
+
+/* Logo Customization */
+#department-logo {
+    height: 50px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+#department-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Join Section */
+.join {
+    background-color: var(--card-background);
+    padding: 5rem 2rem;
+}
+
+.join-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.join-card {
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--primary-color);
+}
+
+.join-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.join-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.join-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.join-card p {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+/* Server Status Banner */
+.emergency-banner {
+    background-color: var(--success-color);
+    color: var(--light-text);
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.emergency-banner a {
+    color: var(--light-text);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.emergency-banner a:hover {
+    color: var(--accent-color);
+}
+
+/* FiveM Server Info */
+.server-info {
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.server-info p {
+    margin: 0.5rem 0;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+/* Discord Integration */
+.discord-widget {
+    background-color: #5865F2;
+    color: var(--light-text);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.discord-widget i {
+    margin-right: 0.5rem;
+}
+
+/* Game-specific Elements */
+.game-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.game-feature {
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.game-feature i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .join-options {
+        grid-template-columns: 1fr;
+    }
+
+    .game-features {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Animation for Server Status */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.server-status {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--success-color);
+    margin-right: 5px;
+    animation: pulse 2s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
 } 

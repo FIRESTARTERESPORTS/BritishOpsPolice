@@ -276,4 +276,135 @@ document.querySelectorAll('img').forEach(img => {
     if (img.complete) {
         img.classList.add('loaded');
     }
-}); 
+});
+
+// Server Status Check
+function checkServerStatus() {
+    const statusIndicator = document.querySelector('.server-status');
+    const statusText = document.querySelector('.status-text');
+    
+    // Simulate server status check (replace with actual FiveM server status check)
+    const isOnline = true; // This should be replaced with actual server status check
+    
+    if (isOnline) {
+        statusIndicator.style.backgroundColor = 'var(--success-color)';
+        statusText.textContent = 'Server Online';
+    } else {
+        statusIndicator.style.backgroundColor = 'var(--error-color)';
+        statusText.textContent = 'Server Offline';
+    }
+}
+
+// Copy Server IP
+function copyServerIP() {
+    const serverIP = 'fivem://connect/your-server-ip'; // Replace with actual server IP
+    navigator.clipboard.writeText(serverIP).then(() => {
+        showNotification('Server IP copied to clipboard!', 'success');
+    }).catch(() => {
+        showNotification('Failed to copy server IP', 'error');
+    });
+}
+
+// Discord Widget
+function loadDiscordWidget() {
+    const discordWidget = document.querySelector('.discord-widget');
+    if (discordWidget) {
+        // Add Discord widget iframe or custom widget here
+        discordWidget.innerHTML = `
+            <iframe src="https://discord.com/widget?id=YOUR_DISCORD_ID&theme=dark" 
+                    width="100%" 
+                    height="300" 
+                    allowtransparency="true" 
+                    frameborder="0">
+            </iframe>
+        `;
+    }
+}
+
+// Game Features Animation
+function initGameFeatures() {
+    const features = document.querySelectorAll('.game-feature');
+    features.forEach((feature, index) => {
+        feature.style.animationDelay = `${index * 0.1}s`;
+        feature.classList.add('fade-in');
+    });
+}
+
+// Join Force Form Validation
+function validateJoinForm(form) {
+    const requiredFields = ['name', 'age', 'discord', 'experience'];
+    let isValid = true;
+
+    requiredFields.forEach(field => {
+        const input = form.querySelector(`[name="${field}"]`);
+        if (!input.value.trim()) {
+            isValid = false;
+            input.classList.add('error');
+            showNotification(`Please fill in the ${field} field`, 'error');
+        } else {
+            input.classList.remove('error');
+        }
+    });
+
+    return isValid;
+}
+
+// Initialize FiveM specific features
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing initialization code ...
+
+    // Initialize FiveM features
+    checkServerStatus();
+    loadDiscordWidget();
+    initGameFeatures();
+
+    // Add event listeners for FiveM specific elements
+    const copyIPButton = document.querySelector('.copy-ip');
+    if (copyIPButton) {
+        copyIPButton.addEventListener('click', copyServerIP);
+    }
+
+    const joinForm = document.querySelector('#join-form');
+    if (joinForm) {
+        joinForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validateJoinForm(joinForm)) {
+                // Handle form submission
+                showNotification('Application submitted successfully!', 'success');
+                joinForm.reset();
+            }
+        });
+    }
+});
+
+// Add these styles to the existing styles
+const additionalStyles = `
+    .fade-in {
+        animation: fadeIn 0.5s ease-in forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .error {
+        border-color: var(--error-color) !important;
+    }
+
+    .success {
+        border-color: var(--success-color) !important;
+    }
+`;
+
+// Add the styles to the document
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet); 
